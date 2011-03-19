@@ -6,5 +6,10 @@
       <prefix>bbq</prefix>
       <artifactId>bbq-maven-plugin</artifactId>
     </plugin>
+    <plugin>
+      <name>bbq-project-archetype</name>
+      <prefix>bbq-project-archetype</prefix>
+      <artifactId>bbq-project-archetype</artifactId>
+    </plugin>
   </plugins>
 </metadata>
