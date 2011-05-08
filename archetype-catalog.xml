@@ -4,7 +4,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <archetypes>
     <archetype>
-      <groupId>org.bbqjs.bbq-project</groupId>
+      <groupId>org.bbqjs</groupId>
       <artifactId>bbq-project-archetype</artifactId>
       <version>1.0.0</version>
       <description>bbq-project-archetype</description>
