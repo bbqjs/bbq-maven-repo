@@ -7,6 +7,13 @@
 	<version>1.0.0</version>
 	<name>BBQjs JavaScript Compiler</name>
 	<url>http://www.bbqjs.org</url>
+	<licenses>
+		<license>
+			<name>The Apache Software License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
 	
 	<properties>
 		<junit.version>4.5</junit.version>
