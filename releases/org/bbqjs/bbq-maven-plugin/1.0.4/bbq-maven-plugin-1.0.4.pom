@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.bbqjs</groupId>
+	<artifactId>bbq-maven-plugin</artifactId>
+	<packaging>maven-plugin</packaging>
+	<version>1.0.4</version>
+	<name>BBQjs Maven Plugin</name>
+	<url>http://www.bbqjs.org</url>
+	<licenses>
+		<license>
+			<name>The Apache Software License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+	
+	<properties>
+		<maven.plugin.api.version>2.0</maven.plugin.api.version>
+		<bbq.compiler.version>1.0.2</bbq.compiler.version>
+		<bbq.test.version>1.0.4</bbq.test.version>
+		<commons.io.version>2.0.1</commons.io.version>
+		<junit.version>4.5</junit.version>
+		
+        <maven.plugin.compiler.version>2.3.2</maven.plugin.compiler.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+	
+	<repositories>
+		<repository>
+			<id>bbq-repo</id>
+			<url>https://github.com/bbqjs/bbq-maven-repo/raw/master/releases</url>
+		</repository>
+	</repositories>
+	
+	<build>
+		<resources>
+			<resource>
+				<directory>${basedir}/src/main/resources</directory>
+			</resource>
+			<resource>
+				<directory>${basedir}/src/main/java</directory>
+				<includes>
+					<include>**/*</include>
+				</includes>
+				<excludes>
+					<exclude>**/*.java</exclude>
+				</excludes>
+			</resource>
+		</resources>
+		<testResources>
+			<testResource>
+				<directory>${basedir}/src/test/resources</directory>
+			</testResource>
+			<testResource>
+				<directory>${basedir}/src/test/java</directory>
+				<includes>
+					<include>**/*</include>
+				</includes>
+				<excludes>
+					<exclude>**/*.java</exclude>
+				</excludes>
+			</testResource>
+			<testResource>
+				<directory>${basedir}/src/test/resources</directory>
+				<filtering>true</filtering>
+			</testResource>
+		</testResources>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven.plugin.compiler.version}</version>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+					<excludes>
+						<exclude>**/*Point*.java</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	
+	<dependencies>
+		<!-- BBQ -->
+		<dependency>
+			<groupId>org.bbqjs</groupId>
+			<artifactId>bbq-javascript-compiler</artifactId>
+			<version>${bbq.compiler.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.bbqjs</groupId>
+			<artifactId>bbq-test</artifactId>
+			<version>${bbq.test.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>${commons.io.version}</version>
+		</dependency>
+		
+		<!-- Because we are a plugin -->
+		<dependency>
+			<groupId>org.apache.maven</groupId>
+			<artifactId>maven-plugin-api</artifactId>
+			<version>${maven.plugin.api.version}</version>
+		</dependency>
+		
+		<!-- Test dependencies -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+	
+</project>
