@@ -24,7 +24,7 @@
 		<bouncycastle.version>130</bouncycastle.version>
 		<commons.io.version>1.4</commons.io.version>
 		<commons.lang.version>2.5</commons.lang.version>
-		<bbq.compiler.version>1.0.2</bbq.compiler.version>
+		<bbq.compiler.version>1.0.3</bbq.compiler.version>
 		
 		<maven.plugin.resources.version>2.4.3</maven.plugin.resources.version>
 		<maven.plugin.compiler.version>2.3.2</maven.plugin.compiler.version>
