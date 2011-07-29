@@ -2,10 +2,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.bbqjs</groupId>
-	<artifactId>bbq-spring-integration</artifactId>
+	<artifactId>bbq-test</artifactId>
 	<packaging>jar</packaging>
 	<version>1.0.1</version>
-	<name>BBQjs Spring Integration</name>
+	<name>BBQjs Tests</name>
 	<url>http://www.bbqjs.org</url>
 	<licenses>
 		<license>
@@ -16,15 +16,10 @@
 	</licenses>
 	
 	<properties>
-		<spring.version>3.0.5.RELEASE</spring.version>
-		<spring.security.version>3.0.5.RELEASE</spring.security.version>
-		<servlet.api.version>2.5</servlet.api.version>
 		<junit.version>4.5</junit.version>
-		<slf4j.version>1.5.8</slf4j.version>
-		<bouncycastle.version>130</bouncycastle.version>
 		<commons.io.version>1.4</commons.io.version>
-		<commons.lang.version>2.5</commons.lang.version>
 		<bbq.compiler.version>1.0.1</bbq.compiler.version>
+		<rhino.version>1.7R2</rhino.version>
 		
 		<maven.plugin.resources.version>2.4.3</maven.plugin.resources.version>
 		<maven.plugin.compiler.version>2.3.2</maven.plugin.compiler.version>
@@ -96,49 +91,18 @@
 			<version>${bbq.compiler.version}</version>
 		</dependency>
 		
-		<!-- Spring -->
+		<!-- Rhino, for unit testing -->
 		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-webmvc</artifactId>
-			<version>${spring.version}</version>
+			<groupId>rhino</groupId>
+			<artifactId>js</artifactId>
+			<version>${rhino.version}</version>
 		</dependency>
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-core</artifactId>
-			<version>${spring.security.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-web</artifactId>
-			<version>${spring.security.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>servlet-api</artifactId>
-			<version>${servlet.api.version}</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-			<version>${slf4j.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.bouncycastle</groupId> 
-			<artifactId>bcprov-jdk12</artifactId> 
-			<version>${bouncycastle.version}</version> 
-		</dependency>
+		
 		<dependency>
 			<groupId>commons-io</groupId>
 			<artifactId>commons-io</artifactId>
 			<version>${commons.io.version}</version>
 		</dependency>
-		<dependency>
-			<groupId>commons-lang</groupId>
-			<artifactId>commons-lang</artifactId>
-			<version>${commons.lang.version}</version>
-		</dependency>
-		
 		
 		<!-- Test dependencies -->
 		<dependency>
