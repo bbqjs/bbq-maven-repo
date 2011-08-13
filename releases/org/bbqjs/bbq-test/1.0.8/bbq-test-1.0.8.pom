@@ -2,10 +2,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.bbqjs</groupId>
-	<artifactId>bbq-maven-plugin</artifactId>
-	<packaging>maven-plugin</packaging>
+	<artifactId>bbq-test</artifactId>
+	<packaging>jar</packaging>
 	<version>1.0.8</version>
-	<name>BBQjs Maven Plugin</name>
+	<name>BBQjs Tests</name>
 	<url>http://www.bbqjs.org</url>
 	<licenses>
 		<license>
@@ -16,15 +16,14 @@
 	</licenses>
 	
 	<properties>
-		<maven.version>3.0.3</maven.version>
-		<maven.plugin.api.version>2.0</maven.plugin.api.version>
-		<bbq.compiler.version>1.0.6</bbq.compiler.version>
-		<bbq.test.version>1.0.7</bbq.test.version>
-		<commons.io.version>2.0.1</commons.io.version>
 		<junit.version>4.5</junit.version>
-		<mockito.version>1.8.5</mockito.version>
+		<commons.io.version>1.4</commons.io.version>
+		<bbq.compiler.version>1.0.7</bbq.compiler.version>
+		<rhino.version>1.7R2</rhino.version>
 		
+		<maven.plugin.resources.version>2.4.3</maven.plugin.resources.version>
 		<maven.plugin.compiler.version>2.3.2</maven.plugin.compiler.version>
+		<maven.plugin.jetty.version>6.1.21</maven.plugin.jetty.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 	
@@ -38,12 +37,12 @@
 	<build>
 		<resources>
 			<resource>
-				<directory>${basedir}/src/main/resources</directory>
+				<directory>src/main/resources</directory>
 			</resource>
 			<resource>
-				<directory>${basedir}/src/main/java</directory>
+				<directory>src/main/java</directory>
 				<includes>
-					<include>**/*</include>
+					<include>**</include>
 				</includes>
 				<excludes>
 					<exclude>**/*.java</exclude>
@@ -52,20 +51,33 @@
 		</resources>
 		<testResources>
 			<testResource>
-				<directory>${basedir}/src/test/resources</directory>
+				<directory>src/test/resources</directory>
+			</testResource>
+			<testResource>
+				<directory>src/test/java</directory>
+				<includes>
+					<include>**</include>
+				</includes>
+				<excludes>
+					<exclude>**/*.java</exclude>
+				</excludes>
 			</testResource>
 		</testResources>
 		<plugins>
 			<plugin>
+				<groupId>org.mortbay.jetty</groupId>
+				<artifactId>maven-jetty-plugin</artifactId>
+				<version>${maven.plugin.jetty.version}</version>
+			</plugin>
+			<plugin>				<groupId>org.apache.maven.plugins</groupId>				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven.plugin.compiler.version}</version>				<configuration>					<source>1.6</source>					<target>1.6</target>					<excludes>						<exclude>**/*Point*.java</exclude>					</excludes>				</configuration>			</plugin>
+			
+			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>${maven.plugin.compiler.version}</version>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>${maven.plugin.resources.version}</version>
 				<configuration>
-					<source>1.6</source>
-					<target>1.6</target>
-					<excludes>
-						<exclude>**/*Point*.java</exclude>
-					</excludes>
+					<encoding>UTF-8</encoding>
 				</configuration>
 			</plugin>
 		</plugins>
@@ -78,10 +90,12 @@
 			<artifactId>bbq-javascript-compiler</artifactId>
 			<version>${bbq.compiler.version}</version>
 		</dependency>
+		
+		<!-- Rhino, for unit testing -->
 		<dependency>
-			<groupId>org.bbqjs</groupId>
-			<artifactId>bbq-test</artifactId>
-			<version>${bbq.test.version}</version>
+			<groupId>rhino</groupId>
+			<artifactId>js</artifactId>
+			<version>${rhino.version}</version>
 		</dependency>
 		
 		<dependency>
@@ -90,44 +104,11 @@
 			<version>${commons.io.version}</version>
 		</dependency>
 		
-		<!-- Because we are a plugin -->
-		<dependency>
-			<groupId>org.apache.maven</groupId>
-			<artifactId>maven-artifact</artifactId>
-			<version>${maven.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.maven</groupId>
-			<artifactId>maven-plugin-api</artifactId>
-			<version>${maven.version}</version>
-		</dependency>
-		<!--<dependency>
-			<groupId>org.apache.maven</groupId>
-			<artifactId>maven-project</artifactId>
-			<version>${maven.version}</version>
-		</dependency>-->
-		<dependency>
-			<groupId>org.apache.maven</groupId>
-			<artifactId>maven-model</artifactId>
-			<version>${maven.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.maven</groupId>
-			<artifactId>maven-core</artifactId>
-			<version>${maven.version}</version>
-		</dependency>
-		
 		<!-- Test dependencies -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>${junit.version}</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.mockito</groupId>
-			<artifactId>mockito-all</artifactId>
-			<version>${mockito.version}</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
