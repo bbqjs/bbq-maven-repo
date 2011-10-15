@@ -1,27 +1,40 @@
 BBQjs Maven repository
-===============
+======================
 
-How to use it
-----------
+N.B.
 
-To use this repository add the following to your Pom:
+The latest version of bbq can be found at https://github.com/achingbrain/bbq
 
-	<distributionManagement>
+This repository is here so your builds will not break, however it will not be here forever so please update your pom files!
+
+The new repo details are:
+
+	<repositories>
 		<repository>
-			<id>repo</id>
-			<url>https://github.com/bbqjs/bbq-maven-repo/raw/master/releases</url>
+			<id>achingbrain-releases</id>
+			<url>http://achingbrain.github.com/maven-repo/releases</url>
 		</repository>
-		<snapshotRepository>
-			<id>snapshot-repo</id>
-			<url>https://github.com/bbqjs/bbq-maven-repo/raw/master/snapshots</url>
-		</snapshotRepository>
-	</distributionManagement>
+		<repository>
+			<id>achingbrain-snapshots</id>
+			<url>http://achingbrain.github.com/maven-repo/snapshots</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
 
-Hopefully at some point we'll make it into Maven Central and this won't be necessary.
+and the for the plugin repositories…
 
-How to add to it
--------------
-
-To install items in this repo, assuming you've checked this project out into the same directory as the other BBQjs projects, cd into the trunk directory of the project you wish to add and issue the command:
-
-    mvn -DaltDeploymentRepository=snapshot-repo::default::file:../../bbq-maven-repo/releases clean deploy
+	<pluginRepositories>
+		<pluginRepository>
+			<id>achingbrain-releases</id>
+			<url>http://achingbrain.github.com/maven-repo/releases</url>
+		</pluginRepository>
+		<pluginRepository>
+			<id>achingbrain-snapshots</id>
+			<url>http://achingbrain.github.com/maven-repo/snapshots</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</pluginRepository>
+	</pluginRepositories>
